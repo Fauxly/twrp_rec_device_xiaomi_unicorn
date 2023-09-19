@@ -38,7 +38,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_NANO_EDITOR=1
 	#export FOX_ENABLE_APP_MANAGER=1  关闭OrangeFox 应用管理器
 	export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
-   	export TW_DEFAULT_LANGUAGE="zh" #不确定对不对，开机看
+   	export TW_DEFAULT_LANGUAGE="zh-CN" #不确定对不对，开机看
 	export LC_ALL="C"
  	export ALLOW_MISSING_DEPENDENCIES=true
     	export FOX_BUILD_DEVICE=unicorn
