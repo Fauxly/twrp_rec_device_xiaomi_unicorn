@@ -17,19 +17,18 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
-    vendor_boot \
+    recovery \
     dtbo \
-    vbmeta \
-    vbmeta_system \
     odm \
     product \
     system \
     system_ext \
-    system_dlkm \
+    vbmeta \
+    vbmeta_system \
     vendor \
-    vendor_dlkm
+    vendor_boot
 
-BOARD_USES_RECOVERY_AS_BOOT := true
+#BOARD_USES_RECOVERY_AS_BOOT := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -55,8 +54,10 @@ TARGET_USES_UEFI := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := twrpfastboot=1 buildvariant=eng
+BOARD_PAGE_SIZE := 4096
 BOARD_BOOTIMG_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_PAGE_SIZE)
 BOARD_KERNEL_IMAGE_NAME := Image
 TARGET_KERNEL_CONFIG := unicorn_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/unicorn
@@ -76,9 +77,9 @@ endif
 BOARD_BOOTIMAGE_PARTITION_SIZE := 201326592
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 201326592
 BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := erofs
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 TARGET_COPY_OUT_VENDOR := vendor
 BOARD_SUPER_PARTITION_SIZE := 7510333204 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := xiaomi_dynamic_partitions
@@ -139,14 +140,21 @@ TW_INCLUDE_LPTOOLS := true
 # Fastbootd
 TW_INCLUDE_FASTBOOTD := true
 
-# Haptic
-TW_SUPPORT_INPUT_AIDL_HAPTICS := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
-TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
-#TW_NO_SCREEN_BLANK := true
-TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko fts_touch_spi.ko qti_battery_charger.ko"
-TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone35/temp"
-TW_BATTERY_SYSFS_WAIT_SECONDS := 6
-TW_BACKUP_EXCLUSIONS := /data/fonts
-TW_DEVICE_VERSION := Xiaomi_13-A13
+# SHRP Stuff
+SHRP_PATH := device/xiaomi/zeus
+SHRP_MAINTAINER := Droneship
+SHRP_DEVICE_CODE := zeus
+SHRP_REC_TYPE := Treble
+SHRP_DEVICE_TYPE := A/B
+SHRP_AB := true
+INC_IN_REC_MAGISK := true
+SHRP_NOTCH := true
+SHRP_EDL_MODE := 1
+SHRP_EXTERNAL := /external_sd
+SHRP_INTERNAL := /sdcard
+SHRP_OTG := /usb_otg
+SHRP_FLASH := 1
+SHRP_DARK := true
+SHRP_REC := /dev/block/bootdevice/by-name/recovery
+SHRP_EXPRESS := true
+BUILD_BROKEN_DUP_SYSPROP := true
