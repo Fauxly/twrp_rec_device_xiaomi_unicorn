@@ -65,7 +65,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export OF_KEEP_DM_VERITY=1
         export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
         export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
-        export OF_DISABLE_MIUI_OTA_BY_DEFAULT=0 #默认启用OTA，如不需要手动关闭即可
+        export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1 #默认关闭OTA，如有需要重新打开即可（不确保适配情况）
 
 	# try to prevent potential data format errors
 	export OF_UNBIND_SDCARD_F2FS=1
