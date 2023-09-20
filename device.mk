@@ -138,4 +138,4 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 
 # OEM otacert
 #PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/recovery/security/miui
+    vendor/recovery/security/miui1
