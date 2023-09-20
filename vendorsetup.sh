@@ -38,7 +38,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_NANO_EDITOR=1
 	#export FOX_ENABLE_APP_MANAGER=1  关闭OrangeFox 应用管理器
 	export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
-   	export TW_DEFAULT_LANGUAGE="zh" #不确定对不对，开机看
+   	export TW_DEFAULT_LANGUAGE="zh-CN" #不确定对不对，开机看
 	export LC_ALL="C"
  	export ALLOW_MISSING_DEPENDENCIES=true
     	export FOX_BUILD_DEVICE=unicorn
@@ -65,7 +65,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export OF_KEEP_DM_VERITY=1
         export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
         export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
-        export OF_DISABLE_MIUI_OTA_BY_DEFAULT=0 #默认启用OTA，如不需要手动关闭即可
+        export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1 #默认关闭OTA，如有需要重新打开即可（不确保适配情况）
 
 	# try to prevent potential data format errors
 	export OF_UNBIND_SDCARD_F2FS=1
