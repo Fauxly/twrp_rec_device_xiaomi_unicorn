@@ -143,7 +143,7 @@ TW_INCLUDE_FASTBOOTD := true
 # SHRP Stuff
 SHRP_PATH := device/xiaomi/unicorn
 SHRP_MAINTAINER := Droneship
-SHRP_DEVICE_CODE := zeus
+SHRP_DEVICE_CODE := unicorn
 SHRP_REC_TYPE := Treble
 SHRP_DEVICE_TYPE := A/B
 SHRP_AB := true
